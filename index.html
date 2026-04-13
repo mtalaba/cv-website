@@ -1,69 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name+"viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <meta charset+"UTF-8">
+    <meta name=viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark Luis Talaba | Portfolio</title>
     <style>
-      body {
-        font-family: Arial;
+      * {
         margin: 0;
-        padding: 20px;
-        background: #f4f4f4;
+        padding: 0;
+        box-sizing: border-box;
       }
+      
+      body {
+        font-family: 'Segeo UI', Arial, sans-serif;
+        background: #f0f2f5;
+        padding: 40px 20px;
+      }
+
       .container {
-        max-width: 800px;
+        max-width: 1000px;
         margin: auto;
         background: white;
-        padding: 20px;
-        border-radius: 10px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
       }
-      img {
-        width: 120px;
+
+      .header {
+        background: lineup-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        padding: 40px;
+        text-align: center;
+        color: white;
+      }
+
+      .header img {
+        width: 130px;
+        height: 130px;
         border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid white;
+        margin-bottom: 15px;
       }
-      h1, h2 {
+
+      .header h1 {
+        font-size: 2rem;
+        margin-bottom: 8px;
+      }
+
+      .header p {
+        opacity: 0.9;
+      }
+
+      .nav-buttons {
+        display:flex;
+        justify-content: center;
+        gap: 12px;
+        padding 20px;
+        background: white;
+        border-bottom: 1px solid #e0e0e0;
+        flex-wrap: wrap;
+      }
+
+      .nav-btn {
+        padding: 10px 24px;
+        background: #f0f2f5;
+        border: none;
+        border-radius: 30px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
         color: #333;
       }
+
+      .nav-btn.active {
+        background: #2a5298;
+        color: white;
+      }
+
+      .content-area {
+        padding: 30px;
+        min-height: 400px;
+      }
+
+      .section {
+        display: none;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .section.active-section{
+        display: block;
+      }
+
+      @keyframe fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .section-title { 
+        font-size : 1.8rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #1e3c72;
+        border-left: 4px solid #2a5298;
+        padding-left: 15px;
+      }
+
+      .education-card, .project-card {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+      }
+
+      .education-card h3, .project-card h3 {
+        color: #1e3c72;
+        margin-botom: 8px;
+      }
+
+      .education-card .institution {
+        font-weight: 600;
+        color: #2a5298;
+      }
+
+      .education-card .data {
+        color: #666;
+        font-size: 0.9rem;
+        margin-top: 5px;
+      }
+
+      .skills-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 15px;
+      }
+
+      .skill-tag {
+        background: #2a5298;
+        color: white;
+        padding: 8px 20px;
+        border-radius: 25px;
+        font-size: 0.9rem;
+      }
+
+      .affliation-text, .research-text {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 12px;
+        line-height: 1.6;
+      }
+
       @media (max-width: 600px) {
         body {
-          padding: 10px;
+          padding: 20px 10px;
+        }
+        .nav-btn {
+          padding: 6px 16px;
+          font-size: 0.85rem;
+        }
+        .content-area {
+          padding: 20px;
         }
       }
-    </style> 
+    </style>
   </head>
   <body>
-    <div class="container">
-      <center>
-        <img src="Mahself.jpg" alt="Profile">
-        <h1>Mark Luis Talaba</h1>
-      </center>
 
-      <h2>Education</h2>
-      <p>Ateneo de Davao University<br>
-         Batchelor of Science in Information Technology<br>
-         2026</p>
+<div class="container">
+  <div class="header">
+    <img src="Mahself.jpg" alt="Profile Photo" onerror="this.src='https://via.placeholder.com/130x130?text=Photo'">
+    <h1>Mark Luis Talaba</h1>
+    <p>Information Technology Graduate | Web Developer</p>
+  </div>
 
-      <h2>Projects</h2>
-      <ul>
-        <li>Student Record System - A simple program that stores student information using JAVA.</li>
+  <div class="nav-buttons">
+    <button class="nav-btn active" data-section="about">About</button>
+    <button class="nav-btn" data-section="education">Education</button>
+    <button class="nav-btn" data-section="projects">Projects</button>
+    <button class="nav-btn" data-section="skills">Skills</button>
+    <button class="nav-btn" data-section="affiliation">Affiliation</button>
+    <button class="nav-btn" data-section="research">Research</button>
+  </div>
 
-        <li>Personal Portfolio - A basic website created using HTML and CSS.</li>
-      </ul>
-
-      <h2>Skills</h2>
-      <ul>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JAVA</li>
-      </ul>
-
-      <h2>Affiliation</h2>
-      <p>Member of AJKC, Ateneo Japanese Kendo Community</p>
-
-      <h2>Research</h2>
-      <p>Currently exploring basic concepts in web development and database systems.</p>
+  <div class="content-area">
+    <div id="about" class="section active-section">
+      <h2 class="section-title">About Me</h2>
+      <p style="line-height: 1.6; color: #444;">I am an Information Technology graduate from Ateneo de Davao University, passionate about web development and software engineering. I enjoy creating meaningful digital experiences and continuously learning new technologies to solve real-world problems.</p>
     </div>
+
+    <div id="education" class="section">
+      <h2 class="section-title">Education</h2>
+      <div class="education-card">
+        <h3>Bachelor of Science in Information Technology</h3>
+        <p class="institution">Ateneo de Davao University</p>
+        <p>Honors: Summa Cum Laude, Class Salutatorian</p>
+        <p class="date">2026</p>
+      </div>
+    </div>
+
+    <div id="projects" class="section">
+      <h2 class="section-title">Projects</h2>
+      <div class="project-card">
+        <h3>Student Record System</h3>
+        <p>A simple program that stores student information using Java.</p>
+      </div>
+      <div class="project-card">
+        <h3>Personal Portfolio</h3>
+        <p>A basic website created using HTML and CSS.</p>
+      </div>
+    </div>
+
+    <div id="skills" class="section">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-list">
+        <span class="skill-tag">HTML</span>
+        <span class="skill-tag">CSS</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">JavaScript (Learning)</span>
+      </div>
+    </div>
+
+    <div id="affiliation" class="section">
+      <h2 class="section-title">Affiliation</h2>
+      <div class="affiliation-text">
+        <p><strong>Member of AJKC</strong> — Ateneo Japanese Kendo Community</p>
+      </div>
+    </div>
+
+    <div id="research" class="section">
+      <h2 class="section-title">Research</h2>
+      <div class="research-text">
+        <p>Currently exploring basic concepts in web development and database systems. Interested in user experience design and front-end frameworks.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const buttons = document.querySelectorAll('.nav-btn');
+  const sections = document.querySelectorAll('.section');
+
+  function switchSection(sectionId) {
+    sections.forEach(section => {
+      section.classList.remove('active-section');
+    });
     
-  </body>
+    const activeSection = document.getElementById(sectionId);
+    if (activeSection) {
+      activeSection.classList.add('active-section');
+    }
+    
+    buttons.forEach(btn => {
+      btn.classList.remove('active');
+      if (btn.getAttribute('data-section') === sectionId) {
+        btn.classList.add('active');
+      }
+    });
+  }
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      const sectionId = button.getAttribute('data-section');
+      switchSection(sectionId);
+    });
+  });
+</script>
+
+</body>
 </html>
